@@ -1,0 +1,42 @@
+https://blog.paperspace.com/svr-kmeans-clustering-for-regression/
+pip install ipywidgets voila
+import ipywidgets as widgets
+from IPython.display import display
+
+cluster_dropdown = widgets.Dropdown(
+    options=['Кластер 1', 'Кластер 2', 'Кластер 3'],
+    value='Кластер 1',
+    description='Выберите кластер:'
+)
+
+# Выбор даты для выбора периода времени
+date_picker = widgets.DatePicker(
+    description='Выберите дату:',
+    disabled=False
+)
+
+# Кнопка для отправки запроса к API
+submit_button = widgets.Button(description='Показать данные')
+
+# Отображение элементов
+display(cluster_dropdown, date_picker, submit_button)
+def on_button_click(b):
+    # Здесь должен быть код для отправки запроса к API и получения данных
+    # Например, используя requests в Python
+    # Затем отобразите полученные данные, используя matplotlib или другой инструмент визуализации
+
+submit_button.on_click(on_button_click)
+voila your_notebook.ipynb
+!pip install requests matplotlib
+
+import matplotlib.pyplot as plt
+
+# Предположим, что 'data' содержит словарь с данными для визуализации
+for cluster, values in data.items():
+    plt.plot(values['dates'], values['values'], label=f'Кластер {cluster}')
+
+plt.xlabel('Дата')
+plt.ylabel('Значение характеристики')
+plt.title('Динамика характеристик в кластерах')
+plt.legend()
+plt.show()
